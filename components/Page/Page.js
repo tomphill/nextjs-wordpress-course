@@ -6,7 +6,11 @@ export const Page = (props) => {
   console.log("PAGE PROPS: ", props);
   return (
     <PageWrapper
-      value={{ title: props.title, featuredImage: props.featuredImage }}
+      value={{
+        propertyFeatures: props.propertyFeatures,
+        title: props.title,
+        featuredImage: props.featuredImage,
+      }}
     >
       <MainMenu
         items={props.mainMenuItems}

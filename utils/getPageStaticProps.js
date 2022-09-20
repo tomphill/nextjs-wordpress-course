@@ -25,6 +25,13 @@ export const getPageStaticProps = async (context) => {
             id
             title
             blocksJSON
+            propertyFeatures {
+              bathrooms
+              bedrooms
+              hasParking
+              petFriendly
+              price
+            }
             featuredImage {
               node {
                 sourceUrl
@@ -72,6 +79,7 @@ export const getPageStaticProps = async (context) => {
   return {
     props: {
       title: data.nodeByUri.title,
+      propertyFeatures: data.nodeByUri.propertyFeatures || null,
       featuredImage: data.nodeByUri.featuredImage?.node?.sourceUrl || null,
       mainMenuItems: mapMainMenuItems(
         data.acfOptionsMainMenu.mainMenu.menuItems
