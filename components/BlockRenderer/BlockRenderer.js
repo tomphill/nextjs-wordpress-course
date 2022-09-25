@@ -3,6 +3,7 @@ import { Column } from "components/Column";
 import { Columns } from "components/Columns";
 import { Cover } from "components/Cover";
 import { FormspreeForm } from "components/FormspreeForm";
+import { Gallery } from "components/Gallery";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
 import { PostTitle } from "components/PostTitle";
@@ -14,6 +15,16 @@ import { theme } from "theme";
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "core/gallery": {
+        return (
+          <Gallery
+            key={block.id}
+            columns={block.attributes.columns || 3}
+            cropImages={block.attributes.imageCrop}
+            items={block.innerBlocks}
+          />
+        );
+      }
       case "acf/formspreeform": {
         return (
           <FormspreeForm
