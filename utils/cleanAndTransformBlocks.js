@@ -12,7 +12,7 @@ export const cleanAndTransformBlocks = async (blocksJSON) => {
             databaseId
           }
         }
-        mediaItems {
+        mediaItems(where: { offsetPagination: { size: 10000 } }) {
           nodes {
             databaseId
             mediaDetails {

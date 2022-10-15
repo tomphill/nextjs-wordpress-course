@@ -9,12 +9,20 @@ import { Paragraph } from "components/Paragraph";
 import { PostTitle } from "components/PostTitle";
 import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
+import { TickItem } from "components/TickItem";
 import Image from "next/image";
 import { theme } from "theme";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/tickitem": {
+        return (
+          <TickItem key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </TickItem>
+        );
+      }
       case "core/gallery": {
         return (
           <Gallery
@@ -37,7 +45,6 @@ export const BlockRenderer = ({ blocks }) => {
         return <PropertyFeatures key={block.id} />;
       }
       case "acf/ctabutton": {
-        console.log("CTA: ", block);
         return (
           <CallToActionButton
             key={block.id}
@@ -91,10 +98,19 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/columns": {
+        console.log("COLUMNS: ", block.attributes);
         return (
           <Columns
             key={block.id}
             isStackedOnMobile={block.attributes.isStackedOnMobile}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+            backgroundColor={
+              theme[block.attributes.backgroundColor] ||
+              block.attributes.style?.color?.background
+            }
           >
             <BlockRenderer blocks={block.innerBlocks} />
           </Columns>
@@ -102,7 +118,18 @@ export const BlockRenderer = ({ blocks }) => {
       }
       case "core/column": {
         return (
-          <Column key={block.id} width={block.attributes.width}>
+          <Column
+            key={block.id}
+            width={block.attributes.width}
+            textColor={
+              theme[block.attributes.textColor] ||
+              block.attributes.style?.color?.text
+            }
+            backgroundColor={
+              theme[block.attributes.backgroundColor] ||
+              block.attributes.style?.color?.background
+            }
+          >
             <BlockRenderer blocks={block.innerBlocks} />
           </Column>
         );
@@ -112,6 +139,7 @@ export const BlockRenderer = ({ blocks }) => {
         return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
       }
       case "core/image": {
+        console.log("IMAGE: ", block);
         return (
           <Image
             key={block.id}
