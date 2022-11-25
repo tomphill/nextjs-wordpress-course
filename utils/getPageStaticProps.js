@@ -83,7 +83,7 @@ export const getPageStaticProps = async (context) => {
       uri,
     },
   });
-  const blocks = await cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
+  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
   return {
     props: {
       seo: data.nodeByUri.seo,

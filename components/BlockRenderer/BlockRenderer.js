@@ -49,7 +49,7 @@ export const BlockRenderer = ({ blocks }) => {
           <CallToActionButton
             key={block.id}
             buttonLabel={block.attributes.data.label}
-            destination={block.attributes.data.destination || "/"}
+            destination={block.attributes.data.destination?.slug || "/"}
             align={block.attributes.data.align}
           />
         );
@@ -139,13 +139,12 @@ export const BlockRenderer = ({ blocks }) => {
         return <BlockRenderer key={block.id} blocks={block.innerBlocks} />;
       }
       case "core/image": {
-        console.log("IMAGE: ", block);
         return (
           <Image
             key={block.id}
             src={block.attributes.url}
-            height={block.attributes.originalHeight}
-            width={block.attributes.originalWidth}
+            height={block.attributes.height}
+            width={block.attributes.width}
             alt={block.attributes.alt || ""}
           />
         );
