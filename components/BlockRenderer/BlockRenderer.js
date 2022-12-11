@@ -49,7 +49,7 @@ export const BlockRenderer = ({ blocks }) => {
           <CallToActionButton
             key={block.id}
             buttonLabel={block.attributes.data.label}
-            destination={block.attributes.data.destination?.slug || "/"}
+            destination={block.attributes.data.destination || "/"}
             align={block.attributes.data.align}
           />
         );
