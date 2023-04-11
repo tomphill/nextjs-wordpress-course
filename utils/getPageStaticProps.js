@@ -14,7 +14,7 @@ export const getPageStaticProps = async (context) => {
           ... on Page {
             id
             title
-            blocksJSON
+            blocks
             featuredImage {
               node {
                 sourceUrl
@@ -28,7 +28,7 @@ export const getPageStaticProps = async (context) => {
           ... on Property {
             id
             title
-            blocksJSON
+            blocks
             seo {
               title
               metaDesc
@@ -83,7 +83,7 @@ export const getPageStaticProps = async (context) => {
       uri,
     },
   });
-  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
+  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocks);
   return {
     props: {
       seo: data.nodeByUri.seo,
