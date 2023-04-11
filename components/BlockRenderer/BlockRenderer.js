@@ -16,6 +16,18 @@ import { theme } from "theme";
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/propertyfeatures": {
+        return (
+          <PropertyFeatures
+            key={block.id}
+            price={block.attributes.price}
+            bathrooms={block.attributes.bathrooms}
+            bedrooms={block.attributes.bedrooms}
+            hasParking={block.attributes.has_parking}
+            petFriendly={block.attributes.pet_friendly}
+          />
+        );
+      }
       case "acf/tickitem": {
         return (
           <TickItem key={block.id}>
@@ -40,9 +52,6 @@ export const BlockRenderer = ({ blocks }) => {
             formId={block.attributes.data.form_id}
           />
         );
-      }
-      case "acf/propertyfeatures": {
-        return <PropertyFeatures key={block.id} />;
       }
       case "acf/ctabutton": {
         return (
