@@ -22,32 +22,26 @@ export const Gallery = ({ columns, cropImages, items }) => {
         <div
           key={item.id}
           style={{ width: `${columnWidth}%` }}
-          className="p-5 flex-grow"
+          className="p-5 flex-grow relative"
         >
           <Image
             src={item.attributes.url}
             height={maxHeight || item.attributes.height}
             width={maxWidth || item.attributes.width}
-            alt={item.attributes.alt}
-            objectFit="cover"
+            alt={item.attributes.alt || ""}
+            className={`object-cover ${cropImages ? "opacity-0" : ""}`}
           />
+          {!!cropImages && (
+            <Image
+              src={item.attributes.url}
+              alt={item.attributes.alt || ""}
+              className="object-cover p-5"
+              fill
+              sizes="1000px"
+            />
+          )}
         </div>
       ))}
     </div>
   );
 };
-
-/*let maxHeight = 0;
-  let maxWidth = 0;
-
-  if (cropImages) {
-    items.forEach((item) => {
-      if (item.attributes.height > maxHeight) {
-        maxHeight = item.attributes.height;
-      }
-      if (item.attributes.width > maxWidth) {
-        maxWidth = item.attributes.width;
-      }
-    });
-  }
-*/

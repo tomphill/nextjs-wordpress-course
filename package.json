@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "graphql": "^16.5.0",
     "html-react-parser": "^3.0.4",
-    "next": "12.1.6",
+    "next": "13.4.19",
     "numeral": "^2.0.6",
     "query-string": "^7.1.1",
     "react": "18.2.0",
@@ -27,8 +27,8 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
-    "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.6"
   }
