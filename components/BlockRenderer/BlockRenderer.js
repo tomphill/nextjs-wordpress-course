@@ -6,7 +6,6 @@ import { FormspreeForm } from "components/FormspreeForm";
 import { Gallery } from "components/Gallery";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
-import { PostTitle } from "components/PostTitle";
 import { PropertyFeatures } from "components/PropertyFeatures";
 import { PropertySearch } from "components/PropertySearch";
 import { TickItem } from "components/TickItem";
@@ -76,6 +75,7 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
+      case "core/post-title":
       case "core/heading": {
         return (
           <Heading
@@ -86,20 +86,10 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-      case "core/post-title": {
-        return (
-          <PostTitle
-            key={block.id}
-            level={block.attributes.level}
-            textAlign={block.attributes.textAlign}
-          />
-        );
-      }
       case "acf/propertysearch": {
         return <PropertySearch key={block.id} />;
       }
       case "core/cover": {
-        console.log("COVER BLOCK: ", block);
         return (
           <Cover key={block.id} background={block.attributes.url}>
             <BlockRenderer blocks={block.innerBlocks} />
@@ -107,7 +97,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/columns": {
-        console.log("COLUMNS: ", block.attributes);
         return (
           <Columns
             key={block.id}

@@ -6,6 +6,9 @@ export const cleanAndTransformBlocks = (blocksJSON) => {
   const assignId = (b) => {
     b.forEach((block) => {
       block.id = uuid();
+      if (block.attributes?.url) {
+        block.attributes.url = block.attributes.url.replace("https", "http");
+      }
       if (block.innerBlocks?.length) {
         assignId(block.innerBlocks);
       }
