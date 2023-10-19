@@ -20,7 +20,7 @@ export const PropertyCard = ({
   petFriendly,
 }) => {
   return (
-    <Link
+    <a
       href={destination}
       className="border-2 border-slate-300 p-5 block bg-slate-100 hover:bg-slate-200"
     >
@@ -57,6 +57,6 @@ export const PropertyCard = ({
           </div>
         </div>
       )}
-    </Link>
+    </a>
   );
 };
