@@ -4,6 +4,7 @@ export const getMenu = async () => {
   const params = {
     query: `
     query MenuQuery {
+      cssVariables
       acfOptionsMainMenu {
         mainMenu {
           callToActionButton {
@@ -47,6 +48,7 @@ export const getMenu = async () => {
   });
   const { data } = await response.json();
   return {
+    cssVariables: data.cssVariables,
     mainMenuItems: mapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menuItems),
     callToActionLabel:
       data.acfOptionsMainMenu.mainMenu.callToActionButton.label,

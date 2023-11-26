@@ -11,9 +11,14 @@ import { PropertySearch } from "components/PropertySearch";
 import { TickItem } from "components/TickItem";
 import Image from "next/image";
 import { theme } from "theme";
+import { getBlockStyling } from "@wp-block-tools/styles";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
+    const { styles, classes } = getBlockStyling(block, {
+      styleFormat: "object",
+    });
+    console.log({ styles, classes });
     switch (block.name) {
       case "acf/propertyfeatures": {
         return (
@@ -72,6 +77,8 @@ export const BlockRenderer = ({ blocks }) => {
               theme[block.attributes.textColor] ||
               block.attributes.style?.color?.text
             }
+            classNames={classes}
+            styles={styles}
           />
         );
       }

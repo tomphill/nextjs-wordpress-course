@@ -25,6 +25,11 @@ export default async function RootLayout({ children }) {
   const data = await getMenu();
   return (
     <html lang="en" className={`${poppins.variable} ${aboreto.variable}`}>
+      <head>
+        <style
+          dangerouslySetInnerHTML={{ __html: `:root{${data.cssVariables}}` }}
+        />
+      </head>
       <body className="font-body">
         <MainMenu
           callToActionDestination={data.callToActionDestination}

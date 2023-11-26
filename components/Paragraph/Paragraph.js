@@ -1,11 +1,17 @@
 import { getTextAlign } from "utils/fonts";
 import { relativeToAbsoluteUrls } from "utils/relativeToAbsoluteUrls";
 
-export const Paragraph = ({ textAlign = "left", content, textColor }) => {
+export const Paragraph = ({
+  textAlign = "left",
+  content,
+  textColor,
+  classNames,
+  styles,
+}) => {
   return (
     <p
-      className={`max-w-5xl mx-auto ${getTextAlign(textAlign)}`}
-      style={{ color: textColor }}
+      className={`${classNames}`}
+      style={styles}
       dangerouslySetInnerHTML={{ __html: relativeToAbsoluteUrls(content) }}
     />
   );
