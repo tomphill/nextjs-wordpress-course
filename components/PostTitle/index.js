@@ -1,1 +1,1 @@
-export * from "./PostTitle";
+export { PostTitle } from "./PostTitle";

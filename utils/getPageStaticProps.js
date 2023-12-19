@@ -14,7 +14,7 @@ export const getPageStaticProps = async (context) => {
           ... on Page {
             id
             title
-            blocks
+            blocks(postTemplate: false)
             featuredImage {
               node {
                 sourceUrl
@@ -28,7 +28,7 @@ export const getPageStaticProps = async (context) => {
           ... on Property {
             id
             title
-            blocks
+            blocks(postTemplate: false)
             seo {
               title
               metaDesc
@@ -84,6 +84,7 @@ export const getPageStaticProps = async (context) => {
     },
   });
   const blocks = cleanAndTransformBlocks(data.nodeByUri.blocks);
+  console.log("BLOCK FROM CLEAN AND TRANSFORM BLOCKS ---------", blocks);
   return {
     props: {
       seo: data.nodeByUri.seo,

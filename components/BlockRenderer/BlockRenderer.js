@@ -13,7 +13,7 @@ import { TickItem } from "components/TickItem";
 import Image from "next/image";
 import { theme } from "theme";
 
-export const BlockRenderer = ({ blocks }) => {
+export const BlockRenderer = ({ blocks = [] }) => {
   return blocks.map((block) => {
     switch (block.name) {
       case "acf/propertyfeatures": {
@@ -99,7 +99,6 @@ export const BlockRenderer = ({ blocks }) => {
         return <PropertySearch key={block.id} />;
       }
       case "core/cover": {
-        console.log("COVER BLOCK: ", block);
         return (
           <Cover key={block.id} background={block.attributes.url}>
             <BlockRenderer blocks={block.innerBlocks} />
@@ -107,7 +106,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/columns": {
-        console.log("COLUMNS: ", block.attributes);
         return (
           <Columns
             key={block.id}
@@ -126,6 +124,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/column": {
+        console.log("COLUMN: ", block);
         return (
           <Column
             key={block.id}

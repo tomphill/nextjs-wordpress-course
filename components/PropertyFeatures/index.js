@@ -1,1 +1,1 @@
-export * from "./PropertyFeatures";
+export { PropertyFeatures } from "./PropertyFeatures";

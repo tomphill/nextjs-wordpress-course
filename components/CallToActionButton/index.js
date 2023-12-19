@@ -1,1 +1,1 @@
-export * from "./CallToActionButton";
+export { CallToActionButton } from "./CallToActionButton";

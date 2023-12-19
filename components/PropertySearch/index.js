@@ -1,1 +1,1 @@
-export * from "./PropertySearch";
+export { PropertySearch } from "./PropertySearch";
